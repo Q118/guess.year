@@ -1,0 +1,25 @@
+{
+  "name": "guess.year",
+  "version": "1.0.0",
+  "description": "Train Brain on Tools",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Q118/guess.year.git"
+  },
+  "author": "Shelby.Rothman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Q118/guess.year/issues"
+  },
+  "homepage": "https://github.com/Q118/guess.year#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "path": "^0.12.7"
+  }
+}

@@ -11,16 +11,20 @@ console.log('Initializing the EJS view engine');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.set('layout extractScripts', true)
+app.set('layout extractStyles', true)
+
 app.use(expressLayouts);
-app.set('layout', 'layouts/master');
 
 app.get('/', function(req, res) {
-  var locals = {
-    title: 'Page Title',
-    description: 'Page Description',
-    header: 'Page Header'
+  res.locals = {
+    title: 'Guess The Year',
+    message: 'This is a message'
   };
-  res.render('the-view', locals);
+  res.render('view', {
+    // additional locals, a custom layout, or other options can be defined here
+  });
 });
 
 app.listen(3000);
+console.log('Listening on port 3000');

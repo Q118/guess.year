@@ -10,25 +10,27 @@ in the view, or it has to be declared just like any other section.
 */ %>
 <%- contentFor('body') %>
 
-This is part of the body.
+<!-- This is part of the body. Will hard Code in but-->
+<!-- todo: eventually willl dynamically load content from app.js. based on year -->
+<button>
 
-<% /*
-When style extraction is enabled, any custom styles that a page defines, will
-be extracted out of the content and made available in the specific placeholder.
-In our example, even though we're defining a <style> within the body, this will
-be placed, according to our layout, inside of the <head> element.
-<link> blocks to load external stylesheets are also extracted when the option
-is enabled.
-*/ %>
+</button>
+<figure class="songSection">
+    <figcaption>Song from Year</figcaption>
+    <audio
+        controls
+        src="./media/sample-3s.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+
 
 <style>
   .page-message { color: blue }
+  figure {margin: 0;}
 </style>
 
-<% /*
-Like stylesheets, scripts can also be extracted.
-This script block will end up at the end of the HTML document.
-*/ %>
 <script>
   // Script content!
 </script>

@@ -2,12 +2,29 @@ console.log("at javascipt main file");
 
 const startSongButton = document.getElementById('start-song');
 const songSection = document.querySelector('.songSection');
-//songSection hidden on page load
-songSection.style.display = 'none';
+const movieStartButton = document.getElementById('start-movie');
+const adStartButton = document.getElementById('start-ad');
+const movieSection = document.querySelector('.movieSection');
+const startNewsButton = document.getElementById('start-news');
+const newsSection = document.querySelector('.newsSection');
+const adSection = document.querySelector('.adSection');
 
-startSongButton.addEventListener('click', () => {
-    console.log("start song button clicked");
-    songSection.style.display = 'block';
-    const song = document.getElementById('song');
-    song.play();
+let buttonArr = [startSongButton, movieStartButton, adStartButton, startNewsButton];
+
+songSection.style.display = 'none';
+movieSection.style.display = 'none';
+newsSection.style.display = 'none';
+adSection.style.display = 'none';
+
+const playIt = (button, section) => {
+    console.log(`${button.value} clicked`);
+    section.style.display = 'block';
+    const playMe = document.getElementById(`${button.value}`);
+    playMe.play();
+}
+
+buttonArr.forEach(button => {
+    button.addEventListener('click', () => {
+        playIt(button, button.value === 'start-song' ? songSection : button.value === 'start-movie' ? movieSection : button.value === 'start-ad' ? adSection : newsSection);
+    });
 });

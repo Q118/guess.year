@@ -12,7 +12,7 @@ in the view, or it has to be declared just like any other section.
 
 <!-- This is part of the body. Will hard Code in but-->
 <!-- todo: eventually willl dynamically load content from app.js. based on year -->
-<button id="start-song">
+<button id="start-song" value="song">
 Load Song
 </button>
 <figure class="songSection">
@@ -24,10 +24,47 @@ Load Song
             <code>audio</code> element.
     </audio>
 </figure>
-
-<button>
+<br>
+<button class="mt-5" id="start-movie" value="movie">
     Load Movie Clip
 </button>
+<figure class="movieSection">
+    <figcaption>Movie Clip from Year</figcaption>
+    <audio id="movie"
+        controls
+        src="./media/sample-3s.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+<br>
+<button class="mt-5" id="start-news" value="news">
+    Load News Clip
+</button>
+<figure class="newsSection">
+    <figcaption>News Clip from Year</figcaption>
+    <audio id="news"
+        controls
+        src="./media/sample-3s.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+<br>
+<button class="mt-5" id="start-ad" value="ad">
+    Load News Clip
+</button>
+<figure class="adSection">
+    <figcaption>Advertisem Clip from Year</figcaption>
+    <audio id="ad"
+        controls
+        src="./media/sample-3s.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+
+
 
 
 <style>

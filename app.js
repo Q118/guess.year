@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
   res.locals = {
     title: 'Guess The Year',
-    message: 'This is a message'
+    message: 'This is a message' //todo: dynamically load here messages for win/loose
   };
   res.render('view', {
     // additional locals, a custom layout, or other options can be defined here

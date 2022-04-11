@@ -5,9 +5,9 @@
             "title": "Billy Madison",
             "year": 1995,
             "clips": {
-                "srcHard": "./media/billy_madison/hard.wav",
-                "srcMedium": "./media/billy_madison/medium.wav",
-                "srcEasy": "./media/billy_madison/easy.wav"
+                "srcHard": "https://www.moviesoundscentral.com/wavs/billy_madison/billy8.wav",
+                "srcMedium": "https://www.moviesoundscentral.com/wavs/billy_madison/billy7.wav",
+                "srcEasy": "https://www.moviesoundscentral.com/wavs/billy_madison/billy3.wav"
             }
         },
         {

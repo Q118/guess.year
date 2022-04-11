@@ -1,4 +1,4 @@
-console.log("at javascipt main file");
+console.log("at js loadMedia file");
 
 const startHardButton = document.getElementById('start-hard');
 const hardSection = document.querySelector('.hardSection');
@@ -9,21 +9,13 @@ const easySection = document.querySelector('.easySection');
 
 let buttonArr = [startHardButton, mediumStartButton,easyStartButton];
 
-
 hardSection.style.display = 'none';
 mediumSection.style.display = 'none';
 easySection.style.display = 'none';
 
-// const playIt = (button, section) => {
-//     console.log(`${section} clicked`);
-//     section.style.display = 'block';
-//     const playMe = document.getElementById(`${button.value}`);
-//     playMe.play();
-// }
 
 buttonArr.forEach(button => {
     button.addEventListener('click', () => {
-        //playIt(button, button.value);
         console.log(button.value);
         const section = document.querySelector(`.${button.value}`);
         section.style.display = 'block';

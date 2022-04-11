@@ -1,70 +1,74 @@
 <%- contentFor('header') %>
 <h1 class="page-title text-center"><%= _locals.title %></h1>
-
+<h3 class="page-message text-center"><%= subTitle %></h3>
+<h4 class="page-message text-center"><%= instructions %></h4>
 <%- contentFor('footer') %>
 <h8>This is the footer</h8>
 
-<% /*
-Content for the `body` section should either be the first thing defined
-in the view, or it has to be declared just like any other section.
-*/ %>
+
 <%- contentFor('body') %>
 
 <!-- This is part of the body. Will hard Code in but-->
 <!-- todo: eventually willl dynamically load content from app.js. based on year -->
-<button id="start-song" value="song">
-Load Song
-</button>
-<figure class="songSection">
-    <figcaption>Song from Year</figcaption>
-    <audio id="song"
-        controls
-        src="./media/sample-3s.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
-<br>
-<button class="mt-5" id="start-movie" value="movie">
-    Load Movie Clip
-</button>
-<figure class="movieSection">
-    <figcaption>Movie Clip from Year</figcaption>
-    <audio id="movie"
-        controls
-        src="./media/sample-3s.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
-<br>
-<button class="mt-5" id="start-news" value="news">
-    Load News Clip
-</button>
-<figure class="newsSection">
-    <figcaption>News Clip from Year</figcaption>
-    <audio id="news"
-        controls
-        src="./media/sample-3s.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
-<br>
-<button class="mt-5" id="start-ad" value="ad">
-    Load Ad Clip
-</button>
-<figure class="adSection">
-    <figcaption>Advertisement Clip from Year</figcaption>
-    <audio id="ad"
-        controls
-        src="./media/sample-3s.mp3">
-            Your browser does not support the
-            <code>audio</code> element.
-    </audio>
-</figure>
+<div class="row">
+    <div class="col-md-7">
+        <button id="start-song" value="song">
+            Load Clip One
+        </button>
+        <figure class="songSection">
+            <figcaption>Song from Year</figcaption>
+            <audio id="song" controls src="./media/1995/billyMadison.wav" value="billy_madison">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </figure>
+        <br>
+        <button class="mt-5" id="start-movie" value="movie">
+            Load Clip Two
+        </button>
+        <figure class="movieSection">
+            <figcaption>Movie Clip from Year</figcaption>
+            <audio id="movie" controls  src="./media/1995/tommyBoy.wav" value="tommy_boy">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </figure>
+        <br>
+        <button class="mt-5" id="start-news" value="news">
+            Load Clip Three
+        </button>
+        <figure class="newsSection">
+            <figcaption>News Clip from Year</figcaption>
+            <audio id="news" controls src="./media/sample-3s.mp3">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </figure>
+        <br>
+        <button class="mt-5" id="start-ad" value="ad">
+            Load Clip Four
+        </button>
+        <figure class="adSection">
+            <figcaption>Advertisement Clip from Year</figcaption>
+            <audio id="ad" controls src="./media/sample-3s.mp3">
+                Your browser does not support the
+                <code>audio</code> element.
+            </audio>
+        </figure>
+    </div>
+    <div class="col-md-5">
+        <h4>Enter Your Guess</h4>
+        <form id="guess-form">
+            <div class="form-group">
+                <label for="guess">Guess</label>
+                <input type="text" class="form-control" id="guess" placeholder="Enter Guess">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
 
 
+
+    </div>
+</div>
 
 
 <style>
@@ -77,4 +81,4 @@ Load Song
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <script src="./JS/main.js"></script>
 
-<!-- <h1 class="page-message"><%= message %></h1> -->
+

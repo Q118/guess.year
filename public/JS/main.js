@@ -25,6 +25,7 @@ const playIt = (button, section) => {
 
 buttonArr.forEach(button => {
     button.addEventListener('click', () => {
+        //likely a way to make this more dynamic
         playIt(button, button.value === 'song' ? songSection : button.value === 'movie' ? movieSection : button.value === 'news' ? newsSection : adSection);
     });
 });

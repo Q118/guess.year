@@ -1,0 +1,24 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "Billy Madison",
+            "year": 1995,
+            "clips": {
+                "srcEasy": "./media/billy_madison/easy.wav",
+                "srcMedium": "./media/billy_madison/medium.wav",
+                "srcHard": "./media/billy_madison/hard.wav"
+            }
+        },
+        {
+            "id": 5,
+            "title": "My Fair Lady",
+            "year": 1964
+        },
+        {
+            "id": 6,
+            "title": "12 Angry",
+            "year": 1957
+        }
+    ]
+}

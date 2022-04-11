@@ -1,31 +1,33 @@
 console.log("at javascipt main file");
 
-const startSongButton = document.getElementById('start-song');
-const songSection = document.querySelector('.songSection');
-const movieStartButton = document.getElementById('start-movie');
-const adStartButton = document.getElementById('start-ad');
-const movieSection = document.querySelector('.movieSection');
-const startNewsButton = document.getElementById('start-news');
-const newsSection = document.querySelector('.newsSection');
-const adSection = document.querySelector('.adSection');
+const startHardButton = document.getElementById('start-hard');
+const hardSection = document.querySelector('.hardSection');
+const mediumStartButton = document.getElementById('start-medium');
+const mediumSection = document.querySelector('.mediumSection');
+const easyStartButton = document.getElementById('start-easy');
+const easySection = document.querySelector('.easySection');
 
-let buttonArr = [startSongButton, movieStartButton, adStartButton, startNewsButton];
+let buttonArr = [startHardButton, mediumStartButton,easyStartButton];
 
-songSection.style.display = 'none';
-movieSection.style.display = 'none';
-newsSection.style.display = 'none';
-adSection.style.display = 'none';
 
-const playIt = (button, section) => {
-    console.log(`${button.value} clicked`);
-    section.style.display = 'block';
-    const playMe = document.getElementById(`${button.value}`);
-    playMe.play();
-}
+hardSection.style.display = 'none';
+mediumSection.style.display = 'none';
+easySection.style.display = 'none';
+
+// const playIt = (button, section) => {
+//     console.log(`${section} clicked`);
+//     section.style.display = 'block';
+//     const playMe = document.getElementById(`${button.value}`);
+//     playMe.play();
+// }
 
 buttonArr.forEach(button => {
     button.addEventListener('click', () => {
-        //likely a way to make this more dynamic
-        playIt(button, button.value === 'song' ? songSection : button.value === 'movie' ? movieSection : button.value === 'news' ? newsSection : adSection);
+        //playIt(button, button.value);
+        console.log(button.value);
+        const section = document.querySelector(`.${button.value}`);
+        section.style.display = 'block';
+        const playMe = document.getElementById(`${button.value}`);
+        playMe.play();
     });
 });

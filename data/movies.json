@@ -5,9 +5,9 @@
             "title": "Billy Madison",
             "year": 1995,
             "clips": {
-                "srcEasy": "./media/billy_madison/easy.wav",
+                "srcHard": "./media/billy_madison/hard.wav",
                 "srcMedium": "./media/billy_madison/medium.wav",
-                "srcHard": "./media/billy_madison/hard.wav"
+                "srcEasy": "./media/billy_madison/easy.wav"
             }
         },
         {

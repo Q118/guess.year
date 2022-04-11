@@ -12,49 +12,41 @@
 <!-- todo: eventually willl dynamically load content from app.js. based on year -->
 <div class="row">
     <div class="col-md-7">
-        <button id="start-song" value="song">
-            Load Clip One
+        <button id="start-hard" value="hardSection">
+            Load First Audio Clip
         </button>
-        <figure class="songSection">
-            <figcaption>Song from Year</figcaption>
-            <audio id="song" controls src="./media/1995/billyMadison.wav" value="billy_madison">
+        <figure class="hardSection">
+            <figcaption>Hardest One</figcaption>
+            <audio id="hardSection" controls src="./media/billy_Madison/hard.wav" value="hard">
                 Your browser does not support the
                 <code>audio</code> element.
             </audio>
         </figure>
         <br>
-        <button class="mt-5" id="start-movie" value="movie">
-            Load Clip Two
+
+        <button class="mt-5" id="start-medium" value="mediumSection">
+            Load Another (lower point)
         </button>
-        <figure class="movieSection">
-            <figcaption>Movie Clip from Year</figcaption>
-            <audio id="movie" controls  src="./media/1995/tommyBoy.wav" value="tommy_boy">
+        <figure class="mediumSection">
+            <figcaption>Medium</figcaption>
+            <audio id="mediumSection" controls  src="./media/billy_Madison/medium.wav" value="medium">
                 Your browser does not support the
                 <code>audio</code> element.
             </audio>
         </figure>
         <br>
-        <button class="mt-5" id="start-news" value="news">
-            Load Clip Three
+
+        <button class="mt-5" id="start-easy" value="easySection">
+            Load the Last Clip (least points)
         </button>
-        <figure class="newsSection">
-            <figcaption>News Clip from Year</figcaption>
-            <audio id="news" controls src="./media/sample-3s.mp3">
+        <figure class="easySection">
+            <figcaption>Easiest Clip</figcaption>
+            <audio id="easySection" controls src="./media/billy_Madison/easy.wav" value="easy">
                 Your browser does not support the
                 <code>audio</code> element.
             </audio>
         </figure>
         <br>
-        <button class="mt-5" id="start-ad" value="ad">
-            Load Clip Four
-        </button>
-        <figure class="adSection">
-            <figcaption>Advertisement Clip from Year</figcaption>
-            <audio id="ad" controls src="./media/sample-3s.mp3">
-                Your browser does not support the
-                <code>audio</code> element.
-            </audio>
-        </figure>
     </div>
     <div class="col-md-5">
         <h4>Enter Your Guess</h4>
@@ -64,7 +56,10 @@
                 <input type="text" class="form-control" id="guess" placeholder="Enter Guess">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-
+<br><br><br>
+            <button>
+                Reveal The Movie Release Year
+            </button>
 
 
     </div>

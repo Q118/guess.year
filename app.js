@@ -4,10 +4,6 @@ const path = require('path');
 const app = express();
 
 console.log('Environment: ' + app.get('env').toLowerCase());
-console.log('Initializing Express');
-
-
-console.log('Initializing the EJS view engine');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

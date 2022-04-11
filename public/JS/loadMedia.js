@@ -13,7 +13,6 @@ hardSection.style.display = 'none';
 mediumSection.style.display = 'none';
 easySection.style.display = 'none';
 
-
 buttonArr.forEach(button => {
     button.addEventListener('click', () => {
         console.log(button.value);

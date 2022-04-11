@@ -22,11 +22,6 @@ const getRandomID = async (arr) => {
   return randomID;
 }
 
-//randomID
-// console.log(movieArr[getRandomID(movieArr)]);
-//!! willl use above but choose number for now until thats set
-console.log(movieArr[0].clips.srcEasy);
-
 
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
@@ -44,14 +39,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-// app.get('/api/user', async function (req, res) {
-//   try {
-//     const response = await getUser();
-//     res.send(response.data);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
+
 
 
 app.listen(3000);

@@ -11,14 +11,24 @@
             }
         },
         {
-            "id": 5,
-            "title": "My Fair Lady",
-            "year": 1964
+            "id": 2,
+            "title": "The Big Lebowski",
+            "year": 1998,
+            "clips": {
+                "srcHard": "https://www.moviesoundscentral.com/sounds/big_lebowski/rules.wav",
+                "srcMedium": "https://www.moviesoundscentral.com/sounds/big_lebowski/money.wav",
+                "srcEasy": "https://www.moviesoundscentral.com/sounds/big_lebowski/dude.wav"
+            }
         },
         {
-            "id": 6,
-            "title": "12 Angry",
-            "year": 1957
+            "id": 3,
+            "title": "A Christmas Story",
+            "year": 1983,
+            "clips": {
+                "srcHard": "https://www.moviesoundscentral.com/sounds/christmas_story/bribe.wav",
+                "srcMedium": "https://www.moviesoundscentral.com/sounds/christmas_story/doubledogdare.wav",
+                "srcEasy": "https://www.moviesoundscentral.com/sounds/christmas_story/eyeout1.wav"
+            }
         }
     ]
 }

@@ -17,9 +17,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const movieArr = movieJSON.movies;
 
-function getRandomID(arr) {
-    const randomID = Math.floor(Math.random() * arr.length);
-    return randomID;
+const getRandomID = async (arr) => {
+  const randomID = Math.floor(Math.random() * arr.length);
+  return randomID;
 }
 
 //randomID
@@ -28,14 +28,16 @@ function getRandomID(arr) {
 console.log(movieArr[0].clips.srcEasy);
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  const index = await getRandomID(movieArr);
+  
   res.locals = {
     title: 'Guess The Movie',
     subTitle: 'Listen to Audio snippets below.',
     instructions: 'More points awarded the less you load.',
-    hardClip: movieArr[0].clips.srcHard,
-    mediumClip: movieArr[0].clips.srcMedium,
-    easyClip: movieArr[0].clips.srcEasy
+    hardClip: movieArr[index].clips.srcHard,
+    mediumClip: movieArr[index].clips.srcMedium,
+    easyClip: movieArr[index].clips.srcEasy
   };
   res.render('view', {
     // additional locals, a custom layout, or other options can be defined here

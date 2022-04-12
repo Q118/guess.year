@@ -8,6 +8,8 @@ const yearSubmit = document.getElementById('year-submit');
 
 const titleAnswer = document.getElementById('reveal-button').value;
 
+
+
 titleSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     console.log(titleAnswer); //debug
@@ -23,7 +25,37 @@ titleSubmit.addEventListener('click', (e) => {
             console.log(err);
         }
     }).then((response) => {
-        console.log(response);
+        //console.log(response);
+        if (response.output === 'Correct') {
+            console.log("correct");
+            handleScoreIncrease(amount);
+            Swal.fire({
+                icon: 'success',
+                title: `Thats right! ${amount} points awarded.`,
+                focusConfirm: true,
+                confirmButtonText:
+                    'Keep Playing',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            })
+        } else {
+            console.log("wrong");
+            Swal.fire({
+                icon: 'error',
+                title: 'Incorrect guess, try again!',
+                focusConfirm: true,
+                confirmButtonText:
+                    'Play Again',
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            })
+        }
     });
 });
 

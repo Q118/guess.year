@@ -46,31 +46,21 @@ app.get('/', async (req, res) => {
 app.post('/guess', async (req, res) => {
   const userGuess = req.body.guess;
   const localAnswer = req.body.trueAnswer;
-  if (userGuess === localAnswer) {
+
+  console.log("guess: " + userGuess);
+  console.log("answer: " + localAnswer);
+
+  if (userGuess.toLowerCase().trim() === localAnswer.toLowerCase().trim()) {
     res.send({
-      output: 'Correct!'
+      output: 'Correct'
     });
   } else {
     res.send({
-      output: 'Correct!'
+      output: 'Wrong'
     });
   }
 });
 
-
-// app.post('/result', (req, res) => {
-//   //retrieve information from the post route defined above
-//   console.log('result page'+ JSON.stringify(req.output));
-//   res.render('result', {
-//     output: req.output
-//   });
-// });
-
-// app.get('/result', (req, res) => {
-//   res.render('result', {
-//     output: req.output
-//   });
-// });
 
 
 app.listen(3000);

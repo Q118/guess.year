@@ -22,7 +22,9 @@ titleSubmit.addEventListener('click', (e) => {
         }, error: (err) => {
             console.log(err);
         }
-    })
+    }).then((response) => {
+        console.log(response);
+    });
 });
 
 yearSubmit.addEventListener('click', (e) => {

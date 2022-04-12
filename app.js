@@ -44,9 +44,34 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/guess', async (req, res) => {
-  console.log(req.body.guess);
-  // console.log(index);
+  const userGuess = req.body.guess;
+  const localAnswer = req.body.trueAnswer;
+  if (userGuess === localAnswer) {
+    res.send({
+      output: 'Correct!'
+    });
+  } else {
+    res.send({
+      output: 'Correct!'
+    });
+  }
 });
+
+
+// app.post('/result', (req, res) => {
+//   //retrieve information from the post route defined above
+//   console.log('result page'+ JSON.stringify(req.output));
+//   res.render('result', {
+//     output: req.output
+//   });
+// });
+
+// app.get('/result', (req, res) => {
+//   res.render('result', {
+//     output: req.output
+//   });
+// });
+
 
 app.listen(3000);
 console.log('Listening on port 3000');

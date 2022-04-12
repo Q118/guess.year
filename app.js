@@ -41,11 +41,11 @@ app.get('/', async (req, res) => {
   res.render('view', {
     // additional locals, a custom layout, or other options can be defined here
   });
-  return index;
 });
 
 app.post('/guess', async (req, res) => {
   console.log(req.body.guess);
+  // console.log(index);
 });
 
 app.listen(3000);

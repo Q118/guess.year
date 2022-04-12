@@ -19,7 +19,6 @@ easySection.style.display = 'none';
 
 buttonArr.forEach(button => {
     button.addEventListener('click', () => {
-        console.log(button.value);
         const section = document.querySelector(`.${button.value}`);
         section.style.display = 'block';
         const playMe = document.getElementById(`${button.value}`);

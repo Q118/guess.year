@@ -1,11 +1,9 @@
 console.log("at js guessForm file");
 
 const titleInput = document.getElementById('guess-title');
-const yearInput = document.getElementById('guess-year');
-
+// const yearInput = document.getElementById('guess-year');
 const titleSubmit = document.getElementById('title-submit');
-const yearSubmit = document.getElementById('year-submit');
-
+// const yearSubmit = document.getElementById('year-submit');
 const titleAnswer = document.getElementById('reveal-button').value;
 
 
@@ -46,6 +44,7 @@ titleSubmit.addEventListener('click', (e) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Incorrect guess, try again!',
+                text: `The correct answer was ${titleAnswer}`,
                 focusConfirm: true,
                 confirmButtonText:
                     'Play Again',
@@ -59,9 +58,9 @@ titleSubmit.addEventListener('click', (e) => {
     });
 });
 
-yearSubmit.addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(yearInput.value);
-});
+// yearSubmit.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     console.log(yearInput.value);
+// });
 
 

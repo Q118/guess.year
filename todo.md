@@ -1,1 +1,0 @@
-- dynamically decrease the amount of points like depending on how many were revealed to listen to

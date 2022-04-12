@@ -23,7 +23,6 @@ const getRandomID = async (arr) => {
   return randomID;
 }
 
-
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
@@ -46,10 +45,8 @@ app.get('/', async (req, res) => {
 app.post('/guess', async (req, res) => {
   const userGuess = req.body.guess;
   const localAnswer = req.body.trueAnswer;
-
   console.log("guess: " + userGuess);
   console.log("answer: " + localAnswer);
-
   if (userGuess.toLowerCase().trim() === localAnswer.toLowerCase().trim()) {
     res.send({
       output: 'Correct'

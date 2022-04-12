@@ -29,6 +29,26 @@
                 "srcMedium": "https://www.moviesoundscentral.com/sounds/christmas_story/doubledogdare.wav",
                 "srcEasy": "https://www.moviesoundscentral.com/sounds/christmas_story/eyeout1.wav"
             }
+        },
+        {
+            "id": 4,
+            "title": "The Breakfast Club",
+            "year": 1985,
+            "clips": {
+                "srcHard": "https://www.moviesoundscentral.com/sounds/breakfast_club/couldntignoreme.wav",
+                "srcMedium": "https://www.moviesoundscentral.com/sounds/breakfast_club/illadvised.wav",
+                "srcEasy": "https://www.moviesoundscentral.com/sounds/breakfast_club.wav"
+            }
+        },
+        {
+            "id": 5,
+            "title": "The 40 Year Old Virgin",
+            "year": 2005,
+            "clips": {
+                "srcHard": "https://www.moviesoundscentral.com/sounds/40_year_old_virgin/man-o-lantern.wav",
+                "srcMedium": "https://www.moviesoundscentral.com/sounds/40_year_old_virgin/upyourasses.wav",
+                "srcEasy": "https://www.moviesoundscentral.com/sounds/40_year_old_virgin/dirtyword.wav"
+            }
         }
     ]
 }

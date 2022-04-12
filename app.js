@@ -26,6 +26,7 @@ const getRandomID = async (arr) => {
 
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
+  const movie = movieArr[index].title;
 
   res.locals = {
     title: 'Guess The Movie',
@@ -33,11 +34,13 @@ app.get('/', async (req, res) => {
     instructions: 'More points awarded the less you load.',
     hardClip: movieArr[index].clips.srcHard,
     mediumClip: movieArr[index].clips.srcMedium,
-    easyClip: movieArr[index].clips.srcEasy
+    easyClip: movieArr[index].clips.srcEasy,
+    answer: movie
   };
   res.render('view', {
     // additional locals, a custom layout, or other options can be defined here
   });
+  return index;
 });
 
 

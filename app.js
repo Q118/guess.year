@@ -27,15 +27,16 @@ const getRandomID = async (arr) => {
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
-
+  const year = movieArr[index].year;
   res.locals = {
     title: 'Guess The Movie',
     subTitle: 'Listen to Audio snippets below.',
-    instructions: 'More points awarded the less you load.',
+    instructions: 'The less you load, the more points awarded.',
     hardClip: movieArr[index].clips.srcHard,
     mediumClip: movieArr[index].clips.srcMedium,
     easyClip: movieArr[index].clips.srcEasy,
-    answer: movie
+    answer: movie,
+    year
   };
   res.render('view', {
     // additional locals, a custom layout, or other options can be defined here
@@ -43,16 +44,9 @@ app.get('/', async (req, res) => {
   return index;
 });
 
-
-// app.get('/guess', async (req, res) => {
-//   console.log(req);
-// });
-
 app.post('/guess', async (req, res) => {
   console.log(req.body.guess);
 });
-
-
 
 app.listen(3000);
 console.log('Listening on port 3000');

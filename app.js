@@ -2,6 +2,7 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
+const bodyParser = require('body-parser');
 
 const movieJSON = require('./data/movies.json');
 
@@ -13,7 +14,7 @@ app.set('layout extractScripts', true)
 app.set('layout extractStyles', true)
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const movieArr = movieJSON.movies;
 
@@ -25,7 +26,7 @@ const getRandomID = async (arr) => {
 
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
-  
+
   res.locals = {
     title: 'Guess The Movie',
     subTitle: 'Listen to Audio snippets below.',
@@ -39,6 +40,14 @@ app.get('/', async (req, res) => {
   });
 });
 
+
+// app.get('/guess', async (req, res) => {
+//   console.log(req);
+// });
+
+app.post('/guess', async (req, res) => {
+  console.log(req.body.guess);
+});
 
 
 

@@ -6,20 +6,21 @@ const yearInput = document.getElementById('guess-year');
 const titleSubmit = document.getElementById('title-submit');
 const yearSubmit = document.getElementById('year-submit');
 
-
+/**
+ * @description - This function is called when the user clicks the submit button for the title.
+ */
 
 titleSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(titleInput.value);
+    console.log(typeof titleInput.value); //debug
     $.ajax({
+        type: 'POST', // leave contentType at default
         url: '/guess',
-        type: 'POST',
-        contentType: "application/x-www-form-urlencoded",
         data: {
             guess: titleInput.value
-        }, success: function (data) {
-            console.log(data);
-        }, error: function (err) {
+        }, success: () => {
+            console.log("data sent to server side");
+        }, error: (err) => {
             console.log(err);
         }
     })

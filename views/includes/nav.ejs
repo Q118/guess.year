@@ -2,7 +2,10 @@
     <span class="navbar-brand mb-0 h1">
         Hi <%= name %>!
     </span>
+    <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit">Log Out</button>
+    </form>
     <span class="navbar-text">
         score: <span id="score"></span>
-      </span>
-  </nav>
+    </span>
+</nav>

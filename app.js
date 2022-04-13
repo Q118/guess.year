@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const flash = require('express-flash');
 const session = require('express-session');
+const methodOverride = require('method-override');
+// ^allows us to use PUT and DELETE
 
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
@@ -39,6 +41,7 @@ app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(express.urlencoded({ extended: false }))
 app.use(flash());
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -47,6 +50,8 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session()); //!persist variables for entire user's session
+
+app.use(methodOverride('_method')); //allows us to use PUT and DELETE
 
 // #endregion
 
@@ -85,12 +90,12 @@ app.post('/guess', async (req, res) => {
 });
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
-  res.render('login');
-});
+  res.render('login')
+})
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
-  res.render('register');
-});
+  res.render('register')
+})
 
 app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
@@ -100,22 +105,24 @@ app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
 
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
     users.push({
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
     })
-    res.redirect('/login');
-  } catch (error) {
-    console.log(error);
-    res.redirect('/register');
+    res.redirect('/login')
+  } catch {
+    res.redirect('/register')
   }
-  console.log(users);
+})
+
+
+app.delete('/logout', (req, res) => {
+  req.logOut(); // this will clear our sesson and logout the user from passport
+  res.redirect('/login');
 });
 
-
-
-app.listen(3000);
-console.log('Listening on port 3000');
+app.listen(3010);
+console.log('Listening on port 3010');

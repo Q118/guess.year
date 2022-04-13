@@ -45,7 +45,7 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(passport.initialize());
-app.use(passport.session()); //persist variables for entire user's session
+app.use(passport.session()); //!persist variables for entire user's session
 
 // #endregion
 
@@ -62,11 +62,10 @@ app.get('/', async (req, res) => {
     mediumClip: movieArr[index].clips.srcMedium,
     easyClip: movieArr[index].clips.srcEasy,
     answer: movie,
-    year
+    year,
+    name: req.user.name
   };
-  res.render('view', {
-    // additional locals, a custom layout, or other options can be defined here
-  });
+  res.render('view', {  });
 });
 
 app.post('/guess', async (req, res) => {

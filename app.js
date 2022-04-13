@@ -1,12 +1,27 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const flash = require('express-flash');
+const session = require('express-session');
+
 
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
+
+const passport = require('passport');
+const initializePassport = require('./passport-config');
+initializePassport(
+  passport, 
+  email => users.find(user => user.email === email),
+);
+
+
 
 //todo: modify so that we can hold users instead of just in memory
 const users = [];
@@ -17,9 +32,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout extractScripts', true)
 app.set('layout extractStyles', true)
+
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(flash());
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));  
+
 // #endregion
 
 //todo need to be logged in to access

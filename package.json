@@ -23,5 +23,8 @@
     "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.1",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.0"
   }
 }

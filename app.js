@@ -23,6 +23,7 @@ const getRandomID = async (arr) => {
   return randomID;
 }
 
+// need to be logged in to access
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
@@ -58,7 +59,13 @@ app.post('/guess', async (req, res) => {
   }
 });
 
+app.get('/login', (req, res) => {
+  res.render('login');
+});
 
+app.get('/register', (req, res) => {
+  res.render('register');
+});
 
 app.listen(3000);
 console.log('Listening on port 3000');

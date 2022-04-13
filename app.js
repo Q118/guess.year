@@ -4,10 +4,11 @@ const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 
-const movieJSON = require('./data/movies.json');
+const getRandomID = require('./API/api.js');
+const movieArr = require('./data/movies.json').movies;
 
 console.log('Environment: ' + app.get('env').toLowerCase());
-
+// #region uses and sets
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('layout extractScripts', true)
@@ -15,13 +16,7 @@ app.set('layout extractStyles', true)
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
-
-const movieArr = movieJSON.movies;
-
-const getRandomID = async (arr) => {
-  const randomID = Math.floor(Math.random() * arr.length);
-  return randomID;
-}
+// #endregion
 
 // need to be logged in to access
 app.get('/', async (req, res) => {

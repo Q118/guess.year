@@ -17,8 +17,9 @@ const movieArr = require('./data/movies.json').movies;
 const passport = require('passport');
 const initializePassport = require('./passport-config');
 initializePassport(
-  passport, 
+  passport,
   email => users.find(user => user.email === email),
+  id => users.find(user => user.id === id)
 );
 
 
@@ -42,7 +43,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
-}));  
+}));
 app.use(passport.initialize());
 app.use(passport.session()); //persist variables for entire user's session
 

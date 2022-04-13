@@ -3,9 +3,13 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
+
+//todo: modify so that we can hold users instead of just in memory
+const users = [];
 
 console.log('Environment: ' + app.get('env').toLowerCase());
 // #region uses and sets
@@ -18,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 // #endregion
 
-// need to be logged in to access
+//todo need to be logged in to access
 app.get('/', async (req, res) => {
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
@@ -60,6 +64,27 @@ app.get('/login', (req, res) => {
 
 app.get('/register', (req, res) => {
   res.render('register');
+});
+
+app.post('/login', (req, res) => {
+
+});
+
+app.post('/register', async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    users.push({
+      id: Date.now().toString(),
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword
+    })
+    res.redirect('/login');
+  } catch (error) {
+    console.log(error);
+    res.redirect('/register');
+  }
+  console.log(users);
 });
 
 app.listen(3000);

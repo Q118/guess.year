@@ -43,6 +43,8 @@ app.use(session({
   resave: false,
   saveUninitialized: false
 }));  
+app.use(passport.initialize());
+app.use(passport.session()); //persist variables for entire user's session
 
 // #endregion
 
@@ -90,9 +92,11 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-app.post('/login', (req, res) => {
-
-});
+app.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
 
 app.post('/register', async (req, res) => {
   try {

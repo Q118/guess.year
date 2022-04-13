@@ -10,12 +10,13 @@ const bcrypt = require('bcrypt');
 const flash = require('express-flash');
 const session = require('express-session');
 
-
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
+const checkAuthenticated = require('./auth/check.js');
+const checkNotAuthenticated = require('./auth/check.js');
 
 const passport = require('passport');
-const initializePassport = require('./passport-config');
+const initializePassport = require('./auth/passport-config');
 initializePassport(
   passport,
   email => users.find(user => user.email === email),
@@ -50,7 +51,7 @@ app.use(passport.session()); //!persist variables for entire user's session
 // #endregion
 
 //todo need to be logged in to access
-app.get('/', async (req, res) => {
+app.get('/', checkAuthenticated, async (req, res) => {
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
   const year = movieArr[index].year;
@@ -62,10 +63,9 @@ app.get('/', async (req, res) => {
     mediumClip: movieArr[index].clips.srcMedium,
     easyClip: movieArr[index].clips.srcEasy,
     answer: movie,
-    year,
-    name: req.user.name
+    year
   };
-  res.render('view', {  });
+  res.render('view', { name: req.user.name });
 });
 
 app.post('/guess', async (req, res) => {
@@ -84,21 +84,21 @@ app.post('/guess', async (req, res) => {
   }
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login');
 });
 
-app.get('/register', (req, res) => {
+app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register');
 });
 
-app.post('/login', passport.authenticate('local', {
+app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash: true
 }))
 
-app.post('/register', async (req, res) => {
+app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     users.push({
@@ -114,6 +114,8 @@ app.post('/register', async (req, res) => {
   }
   console.log(users);
 });
+
+
 
 app.listen(3000);
 console.log('Listening on port 3000');

@@ -14,8 +14,8 @@ const methodOverride = require('method-override');
 
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
-const checkAuthenticated = require('./auth/check.js');
-const checkNotAuthenticated = require('./auth/check.js');
+// const checkAuthenticated = require('./auth/check.js');
+// const checkNotAuthenticated = require('./auth/check.js');
 
 const passport = require('passport');
 const initializePassport = require('./auth/passport-config');
@@ -25,7 +25,19 @@ initializePassport(
   id => users.find(user => user.id === id)
 );
 
+const checkAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+      return next();
+  }
+  res.redirect('/login');
+}
 
+const checkNotAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+      return res.redirect('/');
+  }
+  next();
+}
 
 //todo: modify so that we can hold users instead of just in memory
 const users = [];
@@ -97,7 +109,7 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
   res.render('register')
 })
 
-app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
+app.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login',
   failureFlash: true

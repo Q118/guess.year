@@ -14,8 +14,6 @@ const methodOverride = require('method-override');
 
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
-// const checkAuthenticated = require('./auth/check.js');
-// const checkNotAuthenticated = require('./auth/check.js');
 
 const passport = require('passport');
 const initializePassport = require('./auth/passport-config');
@@ -25,22 +23,24 @@ initializePassport(
   id => users.find(user => user.id === id)
 );
 
-const checkAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-      return next();
-  }
-  res.redirect('/login');
-}
-
-const checkNotAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-      return res.redirect('/');
-  }
-  next();
-}
+const { checkAuthenticated } = require('./auth/check.js');
+const { checkNotAuthenticated } = require('./auth/check.js');
 
 //todo: modify so that we can hold users instead of just in memory
 const users = [];
+
+const jsonServer = require('json-server')
+const server = jsonServer.create()
+const router = jsonServer.router('db.json')
+const middlewares = jsonServer.defaults()
+
+server.use(middlewares)
+server.use(router)
+server.listen(3000, () => {
+  console.log('JSON Server is running')
+})
+
+
 
 console.log('Environment: ' + app.get('env').toLowerCase());
 // #region uses and sets

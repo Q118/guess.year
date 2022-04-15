@@ -4,13 +4,26 @@
       "id": 1,
       "name": "",
       "email": "",
-      "password": ""
+      "password": "",
+      "score": 0
     },
     {
       "id": "1650055259475",
-      "name": "Shelby",
+      "name": "shelby",
       "email": "s@h",
-      "password": "$2b$10$e.6ziqXeCUZjwUWCcvrh/.9Eh9aOdcX6onIzvBQSMzoRoS7IfYnd."
+      "password": "$2b$10$e.6ziqXeCUZjwUWCcvrh/.9Eh9aOdcX6onIzvBQSMzoRoS7IfYnd.",
+      "score": 0
+    },
+    {
+      "id": "1650057456877",
+      "name": "jerry",
+      "email": "j@j",
+      "password": "$2b$10$cUpTVl/bt1aImCEjbi4VOu03t8E60P1HQRz59JlOSx46D6ZfUbm4.",
+      "score": 0
+    },
+    {
+      "score": 3,
+      "id": "CM29d-U"
     }
   ]
 }

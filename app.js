@@ -11,7 +11,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 // ^allows us to use PUT and DELETE
-
+const users = require('./db.json').users;
 const addUser = require('./API/db.js');
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
@@ -67,14 +67,6 @@ app.use(passport.session()); //!persist variables for entire user's session
 app.use(methodOverride('_method')); //allows us to use PUT and DELETE
 
 
-// const users = [];
-// set users to to be held in db.json
-const users = require('./db.json').users;
-
-
-
-
-
 // #endregion
 
 //todo need to be logged in to access
@@ -128,20 +120,14 @@ app.post('/login', passport.authenticate('local', {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
     const newUser = {
       id: Date.now().toString(),
-      name: req.body.name,
+      name: (req.body.name).toLowerCase(),
       email: req.body.email,
-      password: hashedPassword
+      password: hashedPassword,
+      score: 0
     }
     addUser(newUser);
-    // users.push({
-    //   id: Date.now().toString(),
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   password: hashedPassword
-    // })
     res.redirect('/login')
   } catch {
     res.redirect('/register')

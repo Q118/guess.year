@@ -12,6 +12,7 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 // ^allows us to use PUT and DELETE
 
+const addUser = require('./API/db.js');
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
 
@@ -27,8 +28,11 @@ const { checkAuthenticated } = require('./auth/check.js');
 const { checkNotAuthenticated } = require('./auth/check.js');
 
 //todo: modify so that we can hold users instead of just in memory
-const users = [];
 
+
+/**
+ * @description - JSON server logic to hold user-state
+ */
 const jsonServer = require('json-server')
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
@@ -37,10 +41,8 @@ const middlewares = jsonServer.defaults()
 server.use(middlewares)
 server.use(router)
 server.listen(3000, () => {
-  console.log('JSON Server is running')
+  console.log('JSON Server is running on 3000')
 })
-
-
 
 console.log('Environment: ' + app.get('env').toLowerCase());
 // #region uses and sets
@@ -52,7 +54,6 @@ app.set('layout extractStyles', true)
 app.use(expressLayouts);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
-
 // app.use(express.urlencoded({ extended: false }))
 app.use(flash());
 app.use(session({
@@ -64,6 +65,15 @@ app.use(passport.initialize());
 app.use(passport.session()); //!persist variables for entire user's session
 
 app.use(methodOverride('_method')); //allows us to use PUT and DELETE
+
+
+// const users = [];
+// set users to to be held in db.json
+const users = require('./db.json').users;
+
+
+
+
 
 // #endregion
 
@@ -118,12 +128,20 @@ app.post('/login', passport.authenticate('local', {
 app.post('/register', checkNotAuthenticated, async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    users.push({
+
+    const newUser = {
       id: Date.now().toString(),
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword
-    })
+    }
+    addUser(newUser);
+    // users.push({
+    //   id: Date.now().toString(),
+    //   name: req.body.name,
+    //   email: req.body.email,
+    //   password: hashedPassword
+    // })
     res.redirect('/login')
   } catch {
     res.redirect('/register')
@@ -137,4 +155,4 @@ app.delete('/logout', (req, res) => {
 });
 
 app.listen(3010);
-console.log('Listening on port 3010');
+console.log('App Listening on port 3010');

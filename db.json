@@ -1,10 +1,16 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "",
-            "email": "",
-            "password": ""
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "1650055259475",
+      "name": "Shelby",
+      "email": "s@h",
+      "password": "$2b$10$e.6ziqXeCUZjwUWCcvrh/.9Eh9aOdcX6onIzvBQSMzoRoS7IfYnd."
+    }
+  ]
 }

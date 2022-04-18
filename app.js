@@ -12,7 +12,21 @@ const session = require('express-session');
 const methodOverride = require('method-override');
 // ^allows us to use PUT and DELETE
 
-const users = require('./db.json').users;
+const getUsers = require('./API/users');
+let users = require('./db.json').users;
+
+const getLocalUsers = () => {
+  users = [];
+  getUsers().then(data => {
+    data.forEach(element => {
+      users.push(element);
+    });
+  }).catch(err => {
+    console.log(err);
+  });
+}
+
+
 const addUser = require('./API/db.js');
 const getRandomID = require('./API/api.js');
 const movieArr = require('./data/movies.json').movies;
@@ -33,7 +47,8 @@ const { checkNotAuthenticated } = require('./auth/check.js');
 /**
  * @description - JSON server logic to hold user-state
  */
-const jsonServer = require('json-server')
+const jsonServer = require('json-server');
+const { get } = require('http');
 const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
@@ -70,6 +85,7 @@ app.use(methodOverride('_method')); //allows us to use PUT and DELETE
 
 //todo need to be logged in to access
 app.get('/', checkAuthenticated, async (req, res) => {
+  await getLocalUsers();
   const index = await getRandomID(movieArr);
   const movie = movieArr[index].title;
   const year = movieArr[index].year;
@@ -103,6 +119,8 @@ app.post('/guess', async (req, res) => {
 });
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
+  // await getLocalUsers().then(() => {
+    getLocalUsers();
   res.render('login')
 })
 

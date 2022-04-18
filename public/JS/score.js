@@ -12,26 +12,27 @@ let userID = localStorage.getItem('userID');
  * @param {int} amount
  */
 
-const handleScoreIncrease = (amount) => {
+const handleScoreIncrease = async (amount) => {
     localScore = scoreBoard.innerHTML;
     localScore = parseInt(localScore);
     localScore += amount;
     scoreBoard.innerHTML = localScore;
-    $.ajax({
-        type: 'PATCH',
-        url: `http://localhost:3000/users/${userID}`,
-        data: {
-            score: localScore
-        }, success: () => {
-            console.log("score sent to db");
-        }, error: (err) => {
-            console.log(err);
-        }
-    })
+    try {
+        $.ajax({
+            type: 'PATCH',
+            url: `http://localhost:3000/users/${userID}`,
+            data: {
+                score: localScore
+            }, success: () => {
+                console.log("score sent to db");
+            }, error: (err) => {
+                console.log(err);
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
 }
-
-//? why do we loose the authentication here but not when user is wrong.
-// well the server restarts on correct answer and thats bc there is a change to the db.json file. and thats because of nodemon? after the patch request
 
 
 $(document).ready(() => {

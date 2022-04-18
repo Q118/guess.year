@@ -22,11 +22,11 @@ titleSubmit.addEventListener('click', (e) => {
         }, error: (err) => {
             console.log(err);
         }
-    }).then((response) => {
-        //console.log(response);
+    }).then(async (response) => {
+        //console.log(response); //debug
         if (response.output === 'Correct') {
             console.log("correct");
-            handleScoreIncrease(amount);
+            await handleScoreIncrease(amount);
             Swal.fire({
                 icon: 'success',
                 title: `Thats right! ${amount} points awarded.`,
@@ -37,7 +37,6 @@ titleSubmit.addEventListener('click', (e) => {
             }).then((result) => {
                 if (result.isConfirmed) {
                     location.reload(); 
-            // problem here is the reloading logs out the user. fix this. maybe i just need a function to bring in a new movie and not reload the page.
                 }
             })
         } else {

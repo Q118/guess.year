@@ -6,6 +6,8 @@ const nameValue = document.getElementById('logout-button').value;
 
 // localStorage.setItem(score, scoreBoard.innerHTML);
 
+//! just redo this whole logic, differently
+
 let userID = localStorage.getItem('userID');
 
 /**

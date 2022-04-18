@@ -23,13 +23,15 @@ const handleScoreIncrease = (amount) => {
         data: {
             score: localScore
         }, success: () => {
-            console.log("score sent to server side");
+            console.log("score sent to db");
         }, error: (err) => {
             console.log(err);
         }
-
     })
 }
+
+//? why do we loose the authentication here but not when user is wrong.
+// well the server restarts on correct answer and thats bc there is a change to the db.json file. and thats because of nodemon? after the patch request
 
 
 $(document).ready(() => {

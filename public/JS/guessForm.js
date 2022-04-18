@@ -36,7 +36,8 @@ titleSubmit.addEventListener('click', (e) => {
                 allowOutsideClick: false
             }).then((result) => {
                 if (result.isConfirmed) {
-                    location.reload();
+                    location.reload(); 
+            // problem here is the reloading logs out the user. fix this. maybe i just need a function to bring in a new movie and not reload the page.
                 }
             })
         } else {
@@ -57,10 +58,3 @@ titleSubmit.addEventListener('click', (e) => {
         }
     });
 });
-
-// yearSubmit.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     console.log(yearInput.value);
-// });
-
-

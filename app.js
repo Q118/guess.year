@@ -11,6 +11,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 // ^allows us to use PUT and DELETE
+
 const users = require('./db.json').users;
 const addUser = require('./API/db.js');
 const getRandomID = require('./API/api.js');
@@ -27,7 +28,6 @@ initializePassport(
 const { checkAuthenticated } = require('./auth/check.js');
 const { checkNotAuthenticated } = require('./auth/check.js');
 
-//todo: modify so that we can hold users instead of just in memory
 
 
 /**
@@ -65,7 +65,6 @@ app.use(passport.initialize());
 app.use(passport.session()); //!persist variables for entire user's session
 
 app.use(methodOverride('_method')); //allows us to use PUT and DELETE
-
 
 // #endregion
 

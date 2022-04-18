@@ -19,7 +19,7 @@
       "name": "jerry",
       "email": "j@j",
       "password": "$2b$10$cUpTVl/bt1aImCEjbi4VOu03t8E60P1HQRz59JlOSx46D6ZfUbm4.",
-      "score": "8"
+      "score": 3
     },
     {
       "score": 3,
@@ -100,6 +100,90 @@
       "name": "wwww",
       "email": "w@w",
       "password": "$2b$10$9CFUv6qx7k8Jm7nIKTpcdOMHVpe7KMPzs6Aiyg6ul94fBJhc3lUwG",
+      "score": 0
+    },
+    {
+      "id": "1650300980892",
+      "name": "qqq",
+      "email": "q@q",
+      "password": "$2b$10$etsMcIKxG.B3uKjpOYbise7kRc2BI0ycHYJ3eswxYlhXViN6R7P6K",
+      "score": 0
+    },
+    {
+      "id": "1650301037869",
+      "name": "ttt",
+      "email": "t@t",
+      "password": "$2b$10$YPVj92g2JFM7kcF1nV/5DOuvZ1cAdlDzoOa73Ff2gg.JMo8TI8ASe",
+      "score": 0
+    },
+    {
+      "id": "1650301087306",
+      "name": "nnn",
+      "email": "n@n",
+      "password": "$2b$10$CEb3pJfmha3xKrqD3L6GDe8e7CFn5KJ1.Zzfd/Dosd4XxUhltyJCi",
+      "score": "8"
+    },
+    {
+      "id": "1650301184178",
+      "name": "ooo",
+      "email": "o@o",
+      "password": "$2b$10$iVCm7laRVPaM6995QnP..ufqfIny53SLSSpe/0GpO/dC97VN9WJmK",
+      "score": "8"
+    },
+    {
+      "id": "1650301495324",
+      "name": "kkk",
+      "email": "k@k",
+      "password": "$2b$10$iovPJ63Ph2/Tw0C3ccX2julAk1ddug36mHHbQ3tmOEaBY2exxyWdO",
+      "score": "8"
+    },
+    {
+      "id": "1650302426877",
+      "name": "bbbb",
+      "email": "b@v",
+      "password": "$2b$10$MND0XE62SUsef0vTN/Ra/OAbKnUKD4pf/HilnCvhxhpNUj9hsCUTe",
+      "score": "8"
+    },
+    {
+      "id": "1650302537565",
+      "name": "tr",
+      "email": "t@r",
+      "password": "$2b$10$yVARXuVl4Ci657V9iVjtNOIPWvEf/JB1/cpGba2Aazcb/APA4FCRW",
+      "score": "8"
+    },
+    {
+      "id": "1650302671947",
+      "name": "gf",
+      "email": "g@f",
+      "password": "$2b$10$ctll8I97OXg.C6ebnIaC/e6EsAAMVPAGM6Kaqtrwu0/NdbvLUBFTK",
+      "score": "8"
+    },
+    {
+      "id": "1650302737591",
+      "name": "re",
+      "email": "r@e",
+      "password": "$2b$10$M53/8/mE5GFhe/X1DJYkxeRjcdr9MvOeb0BrcY5uJl08whJdSjvFC",
+      "score": "8"
+    },
+    {
+      "id": "1650302888214",
+      "name": "tew",
+      "email": "w@q",
+      "password": "$2b$10$y/aVTqMAZWFTBS1l9MC36.lNGajvbwt4/fU2PIzh2HFFyjsBD0wD6",
+      "score": "8"
+    },
+    {
+      "id": "1650303027219",
+      "name": "grfg",
+      "email": "g@r",
+      "password": "$2b$10$wSAMqIwqxmcgL0untzbgEOCp/gZfzrJ/dFf.SdzkkjMOnYIqGVdMq",
+      "score": "8"
+    },
+    {
+      "id": "1650303099558",
+      "name": "ds",
+      "email": "t@w",
+      "password": "$2b$10$LhboNfGOp6DplJ.kPFPs8ePeqt35nuryPo5jSHB/4kj7hiyPFh0Za",
       "score": 0
     }
   ]

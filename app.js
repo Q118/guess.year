@@ -15,7 +15,7 @@ const methodOverride = require('method-override');
 const getUsers = require('./API/users');
 let users = require('./db.json').users;
 
-const getLocalUsers = () => {
+const getLocalUsers = async () => {
   users = [];
   getUsers().then(data => {
     data.forEach(element => {
@@ -85,21 +85,24 @@ app.use(methodOverride('_method')); //allows us to use PUT and DELETE
 
 //todo need to be logged in to access
 app.get('/', checkAuthenticated, async (req, res) => {
-  await getLocalUsers();
-  const index = await getRandomID(movieArr);
-  const movie = movieArr[index].title;
-  const year = movieArr[index].year;
-  res.locals = {
-    title: 'Guess The Movie',
-    subTitle: 'Listen to Audio snippets below.',
-    instructions: 'The less you load, the more points awarded.',
-    hardClip: movieArr[index].clips.srcHard,
-    mediumClip: movieArr[index].clips.srcMedium,
-    easyClip: movieArr[index].clips.srcEasy,
-    answer: movie,
-    year
-  };
-  res.render('view', { name: req.user.name });
+  await getLocalUsers().then(async () => {
+    const index = await getRandomID(movieArr);
+    const movie = movieArr[index].title;
+    const year = movieArr[index].year;
+    res.locals = {
+      title: 'Guess The Movie',
+      subTitle: 'Listen to Audio snippets below.',
+      instructions: 'The less you load, the more points awarded.',
+      hardClip: movieArr[index].clips.srcHard,
+      mediumClip: movieArr[index].clips.srcMedium,
+      easyClip: movieArr[index].clips.srcEasy,
+      answer: movie,
+      year
+    };
+    res.render('view', { name: req.user.name });
+  }).catch(err => {
+    console.log(err);
+  });
 });
 
 app.post('/guess', async (req, res) => {
@@ -120,7 +123,7 @@ app.post('/guess', async (req, res) => {
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
   // await getLocalUsers().then(() => {
-    getLocalUsers();
+  getLocalUsers();
   res.render('login')
 })
 

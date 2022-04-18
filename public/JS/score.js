@@ -2,7 +2,7 @@
 const scoreBoard = document.getElementById('score');
 const nameValue = document.getElementById('logout-button').value;
 
-let amount = 0; // this pointer to track score of current movie-session
+// let amount = 0; // this pointer to track score of current movie-session
 
 // localStorage.setItem(score, scoreBoard.innerHTML);
 
@@ -13,10 +13,9 @@ let userID = localStorage.getItem('userID');
  */
 
 const handleScoreIncrease = async (amount) => {
-    localScore = scoreBoard.innerHTML;
-    localScore = parseInt(localScore);
+    let localScore = parseInt(scoreBoard.innerHTML);
     localScore += amount;
-    scoreBoard.innerHTML = localScore;
+    console.log(`localScore at increase func before try: ${localScore}`);
     try {
         $.ajax({
             type: 'PATCH',
@@ -25,6 +24,8 @@ const handleScoreIncrease = async (amount) => {
                 score: localScore
             }, success: () => {
                 console.log("score sent to db");
+                console.log(`localScore in try: ${localScore}`);
+                scoreBoard.innerHTML = localScore;
             }, error: (err) => {
                 console.log(err);
             }
@@ -35,18 +36,19 @@ const handleScoreIncrease = async (amount) => {
 }
 
 
-$(document).ready(() => {
-    $.ajax({
+$(document).ready( async () => {
+
+// okay whats happening is that when the page loads, the score is set to the value of the score in the db and like when its a new user, that is at zero and if its the first question they get correct, then the score stays at zero instead of changing because the score is set to zero in the db.
+
+    await $.ajax({
         type: 'GET',
-        url: `http://localhost:3000/users?name=${nameValue}`,
-        success: (response) => {
-            // console.log(response[0].score);
-            scoreBoard.innerHTML = response[0].score;
-            localStorage.setItem("userID", response[0].id);
-        },
-        error: (err) => {
-            console.log(err);
-        }
+        url: `http://localhost:3000/users?name=${nameValue}`
+    }).then(async (response) => {
+        console.log(response);
+        scoreBoard.innerHTML = response[0].score;
+        localStorage.setItem("userID", response[0].id);
+    }).catch((err) => {
+        console.log(err);
     });
 });
 

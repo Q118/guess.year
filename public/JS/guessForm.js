@@ -26,19 +26,22 @@ titleSubmit.addEventListener('click', (e) => {
         //console.log(response); //debug
         if (response.output === 'Correct') {
             console.log("correct");
-            await handleScoreIncrease(amount);
-            Swal.fire({
-                icon: 'success',
-                title: `Thats right! ${amount} points awarded.`,
-                focusConfirm: true,
-                confirmButtonText:
-                    'Keep Playing',
-                allowOutsideClick: false
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    location.reload(); 
-                }
-            })
+            await handleScoreIncrease(amount).then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: `Thats right! ${amount} points awarded.`,
+                    focusConfirm: true,
+                    confirmButtonText:
+                        'Keep Playing',
+                    allowOutsideClick: false
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    }
+                })
+            }).catch((err) => {
+                console.log(err);
+            });
         } else {
             console.log("wrong");
             Swal.fire({

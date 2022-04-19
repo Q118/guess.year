@@ -8,22 +8,11 @@
       "score": 0
     },
     {
-      "id": "1650055259475",
-      "name": "shelby",
-      "email": "s@h",
-      "password": "$2b$10$e.6ziqXeCUZjwUWCcvrh/.9Eh9aOdcX6onIzvBQSMzoRoS7IfYnd.",
-      "score": "8"
-    },
-    {
       "id": "1650057456877",
       "name": "jerry",
       "email": "j@j",
       "password": "$2b$10$cUpTVl/bt1aImCEjbi4VOu03t8E60P1HQRz59JlOSx46D6ZfUbm4.",
-      "score": 3
-    },
-    {
-      "score": 3,
-      "id": "CM29d-U"
+      "score": "11"
     },
     {
       "id": "1650297427239",
@@ -37,20 +26,13 @@
       "name": "amy",
       "email": "a@a",
       "password": "$2b$10$xEpAic/dklLYFbOMlQdNtegdZDKrLokeJerpvb3RQQEFcHwMFCxS.",
-      "score": "16"
+      "score": "24"
     },
     {
       "id": "1650297728899",
       "name": "amy",
       "email": "a@a",
       "password": "$2b$10$0pYL8ckXe7KmiHL9h4HH7udPNE1DmFQ4KY2OegbYjy8D4nnSKQOtW",
-      "score": 0
-    },
-    {
-      "id": "1650297771412",
-      "name": "josh",
-      "email": "j@j",
-      "password": "$2b$10$KZxPr3sIwCQofoFA/6zr1.3KcFOa2Gtu4K5QGMMqssNOQcez54ECS",
       "score": 0
     },
     {
@@ -100,7 +82,7 @@
       "name": "wwww",
       "email": "w@w",
       "password": "$2b$10$9CFUv6qx7k8Jm7nIKTpcdOMHVpe7KMPzs6Aiyg6ul94fBJhc3lUwG",
-      "score": 0
+      "score": "8"
     },
     {
       "id": "1650300980892",
@@ -184,7 +166,21 @@
       "name": "ds",
       "email": "t@w",
       "password": "$2b$10$LhboNfGOp6DplJ.kPFPs8ePeqt35nuryPo5jSHB/4kj7hiyPFh0Za",
-      "score": 0
+      "score": "24"
+    },
+    {
+      "id": "1650382423142",
+      "name": "eee",
+      "email": "e@e",
+      "password": "$2b$10$YI53BVYVtX1w2UeKaPwFoek6j35JcoVzlEaHapkTKxgqvvhRhdfny",
+      "score": "80"
+    },
+    {
+      "id": "1650385769826",
+      "name": "tre",
+      "email": "tre@tre",
+      "password": "$2b$10$2zMpEM84OLgorW8cz0zpAuzFF7iYEgztbhsm6wJOE/e7lJFcXoa26",
+      "score": "16"
     }
   ]
 }

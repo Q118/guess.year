@@ -13,7 +13,8 @@ const methodOverride = require('method-override');
 // ^allows us to use PUT and DELETE
 
 const getUsers = require('./API/users');
-let users = require('./db.json').users;
+//let users = require('./db.json').users;
+let users;
 
 const getLocalUsers = async () => {
   users = [];
@@ -21,6 +22,7 @@ const getLocalUsers = async () => {
     data.forEach(element => {
       users.push(element);
     });
+    // console.log(`in getLocalUsers then: ${data}`);
   }).catch(err => {
     console.log(err);
   });
@@ -37,7 +39,8 @@ initializePassport(
   passport,
   email => users.find(user => user.email === email),
   id => users.find(user => user.id === id)
-);
+)
+
 
 const { checkAuthenticated } = require('./auth/check.js');
 const { checkNotAuthenticated } = require('./auth/check.js');
@@ -99,7 +102,10 @@ app.get('/', checkAuthenticated, async (req, res) => {
       answer: movie,
       year
     };
-    res.render('view', { name: req.user.name });
+    res.render('view', {
+      name: req.user.name
+      // score: parseInt(req.user.score)
+    });
   }).catch(err => {
     console.log(err);
   });
@@ -121,10 +127,13 @@ app.post('/guess', async (req, res) => {
   }
 });
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login', checkNotAuthenticated, async (req, res) => {
   // await getLocalUsers().then(() => {
-  getLocalUsers();
-  res.render('login')
+  await getLocalUsers().then(() => {
+    res.render('login')
+  }).catch(err => {
+    console.log(err);
+  });
 })
 
 app.get('/register', checkNotAuthenticated, (req, res) => {

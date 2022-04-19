@@ -4,7 +4,6 @@
   "description": "Train Brain on Tools",
   "main": "app.js",
   "scripts": {
-    "prestart": "nodemon --ignore db.json",
     "start": "nodemon app.js"
   },
   "repository": {

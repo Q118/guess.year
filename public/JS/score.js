@@ -2,19 +2,17 @@
 const scoreBoard = document.getElementById('score');
 const nameValue = document.getElementById('logout-button').value;
 
-// let amount = 0; // this pointer to track score of current movie-session
+// it changes at first but reload sends it back to original score bc the app.get/ is resending the same info? .. look at getUsers
 
-// localStorage.setItem(score, scoreBoard.innerHTML);
 
-//! just redo this whole logic, differently
-
-let userID = localStorage.getItem('userID');
+// let userID = localStorage.getItem('userID');
 
 /**
  * @param {int} amount
  */
 
 const handleScoreIncrease = async (amount) => {
+    let userID = localStorage.getItem('userID');
     let localScore = parseInt(scoreBoard.innerHTML);
     localScore += amount;
     console.log(`localScore at increase func before try: ${localScore}`);
@@ -35,19 +33,21 @@ const handleScoreIncrease = async (amount) => {
     } catch (error) {
         console.log(error);
     }
+    console.log(`localScore at increase func AFTER catch: ${localScore}`);
+    scoreBoard.innerHTML = localScore;
+    return localScore;
 }
 
 
-$(document).ready( async () => {
-
-// okay whats happening is that when the page loads, the score is set to the value of the score in the db and like when its a new user, that is at zero and if its the first question they get correct, then the score stays at zero instead of changing because the score is set to zero in the db.
-
-    await $.ajax({
+$(document).ready(() => {
+    $.ajax({
         type: 'GET',
         url: `http://localhost:3000/users?name=${nameValue}`
     }).then(async (response) => {
         console.log(response);
-        scoreBoard.innerHTML = response[0].score;
+        if(typeof localScore === "undefined" || localScore < response[0].score) {
+            scoreBoard.innerHTML = response[0].score;
+        } // else will set it to localScore from increase func
         localStorage.setItem("userID", response[0].id);
     }).catch((err) => {
         console.log(err);

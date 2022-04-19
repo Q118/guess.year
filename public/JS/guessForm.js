@@ -7,7 +7,6 @@ const titleSubmit = document.getElementById('title-submit');
 const titleAnswer = document.getElementById('reveal-button').value;
 
 
-
 titleSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     console.log(titleAnswer); //debug

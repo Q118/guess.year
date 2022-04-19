@@ -6,10 +6,9 @@ const titleSubmit = document.getElementById('title-submit');
 // const yearSubmit = document.getElementById('year-submit');
 const titleAnswer = document.getElementById('reveal-button').value;
 
-
 titleSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(titleAnswer); //debug
+    //console.log(titleAnswer); //debug
     $.ajax({
         type: 'POST', // leave contentType at default
         url: '/guess',
@@ -22,7 +21,6 @@ titleSubmit.addEventListener('click', (e) => {
             console.log(err);
         }
     }).then(async (response) => {
-        //console.log(response); //debug
         if (response.output === 'Correct') {
             console.log("correct");
             await handleScoreIncrease(amount).then(() => {

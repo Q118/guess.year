@@ -22,12 +22,10 @@ const getLocalUsers = async () => {
     data.forEach(element => {
       users.push(element);
     });
-    // console.log(`in getLocalUsers then: ${data}`);
   }).catch(err => {
     console.log(err);
   });
 }
-
 
 const addUser = require('./API/db.js');
 const getRandomID = require('./API/api.js');
@@ -41,11 +39,8 @@ initializePassport(
   id => users.find(user => user.id === id)
 )
 
-
 const { checkAuthenticated } = require('./auth/check.js');
 const { checkNotAuthenticated } = require('./auth/check.js');
-
-
 
 /**
  * @description - JSON server logic to hold user-state

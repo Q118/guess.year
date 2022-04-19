@@ -2,10 +2,6 @@
 const scoreBoard = document.getElementById('score');
 const nameValue = document.getElementById('logout-button').value;
 
-// it changes at first but reload sends it back to original score bc the app.get/ is resending the same info? .. look at getUsers
-
-
-// let userID = localStorage.getItem('userID');
 
 /**
  * @param {int} amount
@@ -15,7 +11,6 @@ const handleScoreIncrease = async (amount) => {
     let userID = localStorage.getItem('userID');
     let localScore = parseInt(scoreBoard.innerHTML);
     localScore += amount;
-    console.log(`localScore at increase func before try: ${localScore}`);
     try {
         $.ajax({
             type: 'PATCH',
@@ -33,18 +28,17 @@ const handleScoreIncrease = async (amount) => {
     } catch (error) {
         console.log(error);
     }
-    console.log(`localScore at increase func AFTER catch: ${localScore}`);
+    // going to leave below so at least the display will always update even if call fails
     scoreBoard.innerHTML = localScore;
     return localScore;
 }
-
 
 $(document).ready(() => {
     $.ajax({
         type: 'GET',
         url: `http://localhost:3000/users?name=${nameValue}`
     }).then(async (response) => {
-        console.log(response);
+        console.log(response);  //debug
         if(typeof localScore === "undefined" || localScore < response[0].score) {
             scoreBoard.innerHTML = response[0].score;
         } // else will set it to localScore from increase func

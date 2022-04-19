@@ -104,7 +104,6 @@ app.get('/', checkAuthenticated, async (req, res) => {
     };
     res.render('view', {
       name: req.user.name
-      // score: parseInt(req.user.score)
     });
   }).catch(err => {
     console.log(err);
@@ -128,7 +127,6 @@ app.post('/guess', async (req, res) => {
 });
 
 app.get('/login', checkNotAuthenticated, async (req, res) => {
-  // await getLocalUsers().then(() => {
   await getLocalUsers().then(() => {
     res.render('login')
   }).catch(err => {
@@ -165,7 +163,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 
 
 app.delete('/logout', (req, res) => {
-  req.logOut(); // this will clear our sesson and logout the user from passport
+  req.logOut(); // this will clear our session and logout the user from passport
   res.redirect('/login');
 });
 
